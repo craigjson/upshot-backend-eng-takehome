@@ -22,9 +22,14 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "@nestjs/common": "^10.0.4",
+    "@nestjs/core": "^10.0.4",
+    "@nestjs/platform-express": "^10.0.4",
+    "kafkajs": "^2.2.4",
     "nest": "^8.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@types/jest": "^27.0.0",

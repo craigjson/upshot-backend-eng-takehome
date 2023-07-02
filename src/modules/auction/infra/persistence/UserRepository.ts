@@ -1,11 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { User } from "../../domain/models/User";
-import { NotificationType } from "../../domain/models/NotificationType";
-
+import { User } from "../../../shared/models/User";
+import { NotificationType } from "../../../shared/models/NotificationType";
 @Injectable()
 export class UserRepository {
   private users: User[] = [
-    // Mock Data
     {
       id: "1",
       email: "",
@@ -30,7 +28,7 @@ export class UserRepository {
     return this.users;
   }
 
-  findById(id: string): User {
+  findById(id: string): User | undefined {
     return this.users.find((user) => user.id === id);
   }
 }

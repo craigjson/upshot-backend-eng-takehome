@@ -1,6 +1,6 @@
 import { Auction } from "../../domain/models/Auction";
 import { AuctionRepository } from "../../infra/persistence/AuctionRepository";
-import { KafkaProducer } from "../../infra/messaging/KafkaProducer";
+import { KafkaProducer } from "../../../shared/infra/messaging/KafkaProducer";
 
 export class AuctionService {
   constructor(
