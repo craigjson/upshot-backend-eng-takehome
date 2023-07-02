@@ -1,31 +1,20 @@
-export type NotificationPreferences = {
-  email: boolean;
-  inApp: boolean;
-  sms: boolean;
-};
+import { NotificationType } from "./NotificationType";
 
 export class User {
   id: string;
-  email: string;
   phoneNumber: string;
-  preferences: NotificationPreferences;
-  interestedCollections: string[]; // a list of collection names the user is interested in
+  email: string;
+  notificationPreferences: NotificationType[];
 
   constructor(
     id: string,
-    email: string,
     phoneNumber: string,
-    preferences: NotificationPreferences,
-    interestedCollections: string[]
+    email: string,
+    notificationPreferences: NotificationType[]
   ) {
     this.id = id;
-    this.email = email;
     this.phoneNumber = phoneNumber;
-    this.preferences = preferences;
-    this.interestedCollections = interestedCollections;
-  }
-
-  isInterested(collectionName: string) {
-    return this.interestedCollections.includes(collectionName);
+    this.email = email;
+    this.notificationPreferences = notificationPreferences;
   }
 }
