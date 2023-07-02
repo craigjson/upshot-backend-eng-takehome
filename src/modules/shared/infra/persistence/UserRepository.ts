@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { User } from "../../../shared/models/User";
-import { NotificationType } from "../../../shared/models/NotificationType";
+import { User } from "../../domain/models/User";
+import { NotificationType } from "../../domain/models/NotificationType";
+
 @Injectable()
 export class UserRepository {
   private users: User[] = [

@@ -8,7 +8,8 @@ export class AuctionController {
 
   @Post()
   async createAuction(@Body() auction: Auction) {
-    await this.auctionService.createAuction(auction);
+    this.auctionService.createAuction(auction);
+    console.log(auction);
     return { success: true };
   }
 }

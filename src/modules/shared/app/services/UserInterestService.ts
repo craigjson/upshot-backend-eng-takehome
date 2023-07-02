@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { UserInterestRepository } from "../../infra/persistence/UserInterestRepository";
+import { UserInterestRepository } from "../../../shared/infra/persistence/UserInterestRepository";
 import { UserRepository } from "../../infra/persistence/UserRepository";
-import { User } from "../../../shared/models/User";
+import { User } from "../../domain/models/User";
 
 @Injectable()
 export class UserInterestService {
@@ -15,7 +15,7 @@ export class UserInterestService {
       await this.userInterestRepository.findInterestedUsersByCollectionId(
         collectionId
       );
-
+    console.log("Found interested users: ", interestedUsers);
     const users = this.userRepository.findAll();
     const filteredUsers = users.filter((user) => {
       return interestedUsers.some((interest) => interest.userId === user.id);

@@ -1,14 +1,17 @@
-import { Kafka } from "kafkajs";
+import { Kafka, Partitioners } from "kafkajs";
 
 export class KafkaProducer {
   private producer: any;
 
   constructor() {
     const kafka = new Kafka({
-      clientId: "my-app",
+      clientId: "upshot-auction-notifications",
       brokers: ["localhost:9092"],
     });
-    this.producer = kafka.producer();
+
+    this.producer = kafka.producer({
+      createPartitioner: Partitioners.LegacyPartitioner,
+    });
   }
 
   async publish(topic: string, message: any): Promise<void> {

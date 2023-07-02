@@ -6,10 +6,8 @@ export class Auction {
   startDate: Date;
   endDate: Date;
 
-  constructor(id: string, nftCollection: NFT, startDate: Date, endDate: Date) {
+  constructor(id: string, nftCollection: NFT) {
     this.id = id;
     this.nftCollection = nftCollection;
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 }

@@ -1,6 +1,6 @@
-import { User } from "../../../shared/models/User";
+import { User } from "../../../shared/domain/models/User";
 
 export interface NotifyUserEvent {
-  user: User;
+  userId: string;
   auctionId: string;
 }

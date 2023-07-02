@@ -1,9 +1,11 @@
 import { AuctionCreatedEvent } from "@modules/auction/domain/events/AuctionCreatedEvent";
-import { KafkaConsumer } from "@modules/notification/infra/messaging/KafkaConsumer";
-import { KafkaProducer } from "@modules/shared/infra/messaging/KafkaProducer";
+import { KafkaConsumer } from "../../infra/messaging/KafkaConsumer";
+import { KafkaProducer } from "../../../shared/infra/messaging/KafkaProducer";
 import { NotifyUserEvent } from "../events/NotifyUserEvent";
-import { UserInterestService } from "@modules/auction/app/services/UserInterestService";
+import { Injectable } from "@nestjs/common";
+import { UserInterestService } from "../../../shared/app/services/UserInterestService";
 
+@Injectable()
 export class AuctionCreatedHandler {
   constructor(
     private consumer: KafkaConsumer,
@@ -17,10 +19,11 @@ export class AuctionCreatedHandler {
     const interestedUsers = await this.userInterestService.getInterestedUsers(
       message.nftCollection
     );
-
+    console.log(`Found ${interestedUsers.length} interested users`);
+    console.log("Found Event: AuctionCreatedEvent");
     interestedUsers.forEach((user) => {
       const notifyUserEvent: NotifyUserEvent = {
-        user: user,
+        userId: user.id,
         auctionId: message.auctionId,
       };
 
