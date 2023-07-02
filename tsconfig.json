@@ -3,7 +3,7 @@
     "target": "es2020",
     "module": "commonjs",
     "outDir": "dist",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -13,8 +13,7 @@
     "baseUrl": "./",
     "paths": {
       "*": ["node_modules/*", "src/types/*"],
-      "@modules/*": ["src/modules/*"],
-      "@shared/*": ["src/shared/*"]
+      "@modules/*": ["src/modules/*"]
     }
   },
   "exclude": ["node_modules"]

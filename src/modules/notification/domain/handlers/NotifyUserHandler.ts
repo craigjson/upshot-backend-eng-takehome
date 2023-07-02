@@ -1,7 +1,7 @@
 import { EmailNotificationService } from "@modules/notification/app/services/EmailNotificationService";
 import { SmsNotificationService } from "@modules/notification/app/services/SmsNotifictionService";
 import { KafkaConsumer } from "@modules/notification/infra/messaging/KafkaConsumer";
-import { NotificationType } from "@modules/shared/models/NotificationType";
+import { NotificationType } from "../../../shared/models/NotificationType";
 import { NotifyUserEvent } from "../events/NotifyUserEvent";
 import { PushNotificationService } from "@modules/notification/app/services/PushNotificationService";
 
@@ -12,10 +12,10 @@ export class NotifyUserHandler {
     private readonly pushNotificationService: PushNotificationService,
     private readonly smsNotificationService: SmsNotificationService
   ) {
-    this.kafkaConsumer.subscribe(
+    /*this.kafkaConsumer.subscribe(
       "NotifyUserEvent",
       this.handleEvent.bind(this)
-    );
+    );*/
   }
 
   private handleEvent(message: NotifyUserEvent) {
