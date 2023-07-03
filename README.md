@@ -48,7 +48,7 @@ Make sure you have the following dependencies installed on your machine:
    yarn start
    ```
 
-5. The application should now be running locally at `http://localhost:3000`.
+5. The application should now be running locally at `http://localhost:8888`.
 
 ## API Endpoints
 
