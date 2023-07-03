@@ -5,7 +5,6 @@ import { NotificationType } from "../../../shared/domain/models/NotificationType
 import { NotifyUserEvent } from "../events/NotifyUserEvent";
 import { Injectable } from "@nestjs/common";
 import { KafkaConsumer } from "../../infra/messaging/KafkaConsumer";
-import { UserService } from "../../../shared/app/services/UserService";
 
 @Injectable()
 export class NotifyUserHandler {
@@ -13,7 +12,6 @@ export class NotifyUserHandler {
     private readonly emailNotificationService: EmailNotificationService,
     private readonly pushNotificationService: PushNotificationService,
     private readonly smsNotificationService: SmsNotificationService,
-    private readonly userService: UserService,
     private readonly consumer: KafkaConsumer
   ) {
     this.consumer.subscribe("NotifyUserEvent", this.handleEvent.bind(this));
