@@ -140,3 +140,9 @@ Given more time, there are several potential improvements that can be made to en
 5. **Error Handling and Retry Mechanisms**: Enhance error handling and retry mechanisms for message processing. Implement strategies such as dead-letter queues, backoff algorithms, and error logging to handle transient failures and ensure reliable message processing.
 
 These improvements can enhance the functionality, performance, reliability, and maintainability of the system, making it more robust and scalable in the long run.
+
+
+### Misc Notes
+1. Imports are kind of a mess due to the time constraint and an issue I was running in with @module tsconfig style imports not working with the debugger. 
+2. There are no unit tests again due to time constraint
+3. Error Handling / Retry Mechanisms with Kafka are essentially non existent and the service will likely crash if input is incorrect or otherwise. Typically my workflow would start with unit tests and practical error handling but I was really feeling the pressure with the time limit
