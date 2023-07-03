@@ -18,9 +18,9 @@ export class KafkaConsumer {
   ): Promise<void> {
     await this.consumer.connect();
     await this.consumer.subscribe({ topic: topic, fromBeginning: true });
-
     await this.consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
+        console.log(JSON.parse(message.value.toString()));
         callback(JSON.parse(message.value.toString()));
       },
     });

@@ -19,18 +19,10 @@ export class NotifyUserHandler {
     this.consumer.subscribe("NotifyUserEvent", this.handleEvent.bind(this));
   }
 
-  handleEvent(message: NotifyUserEvent) {
-    const { userId, auctionId } = message;
-    if (userId == null) {
-      return;
-    }
+  async handleEvent(message: NotifyUserEvent) {
+    const user = message.user;
+    const auctionId = message.auctionId;
     console.log("Found Event: NotifyUserEvent");
-    console.log(`User id: ${userId}`);
-    const user = this.userService.findById(userId);
-    if (user == null) {
-      console.log(`User with id ${userId} not found`);
-      return;
-    }
     // Iterate over user notification preferences and send notifications to appropriate services
     user.notificationPreferences.forEach((preference) => {
       switch (preference) {

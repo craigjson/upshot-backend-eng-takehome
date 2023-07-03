@@ -23,8 +23,6 @@ import { UserInterestRepository } from "../shared/infra/persistence/UserInterest
     SmsNotificationService,
     PushNotificationService,
     EmailNotificationService,
-    NotifyUserHandler,
-    AuctionCreatedHandler,
     UserInterestService,
     UserRepository,
     UserInterestRepository,

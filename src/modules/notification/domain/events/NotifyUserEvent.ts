@@ -1,6 +1,7 @@
 import { User } from "../../../shared/domain/models/User";
 
 export interface NotifyUserEvent {
-  userId: string;
+  user: User;
   auctionId: string;
+  collectionId: string;
 }

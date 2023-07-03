@@ -16,15 +16,14 @@ export class AuctionCreatedHandler {
   }
 
   async handleEvent(message: AuctionCreatedEvent) {
-    const interestedUsers = await this.userInterestService.getInterestedUsers(
-      message.nftCollection
-    );
-    console.log(`Found ${interestedUsers.length} interested users`);
+    const interestedUsers = this.userInterestService.getUsers();
     console.log("Found Event: AuctionCreatedEvent");
+    console.log(message);
     interestedUsers.forEach((user) => {
       const notifyUserEvent: NotifyUserEvent = {
-        userId: user.id,
+        user: user,
         auctionId: message.auctionId,
+        collectionId: message.nftCollection,
       };
 
       this.producer.publish("NotifyUserEvent", notifyUserEvent);
