@@ -4,7 +4,7 @@ import { NotificationType } from "../../domain/models/NotificationType";
 
 @Injectable()
 export class UserRepository {
-  private users: User[] = [
+  users: User[] = [
     {
       id: "1",
       email: "",

@@ -20,25 +20,36 @@ export class NotifyUserHandler {
   }
 
   async handleEvent(message: NotifyUserEvent) {
-    const user = message.user;
-    const auctionId = message.auctionId;
+    const { user, auctionId, collection } = message;
     console.log("Found Event: NotifyUserEvent");
     // Iterate over user notification preferences and send notifications to appropriate services
-    user.notificationPreferences.forEach((preference) => {
+    for (const preference of user.notificationPreferences) {
       switch (preference) {
         case NotificationType.Email:
-          this.emailNotificationService.sendNotification(user.id, auctionId);
+          this.emailNotificationService.sendNotification(
+            user.id,
+            auctionId,
+            collection.collectionName
+          );
           break;
         case NotificationType.InApp:
-          this.pushNotificationService.sendNotification(user.id, auctionId);
+          this.pushNotificationService.sendNotification(
+            user.id,
+            auctionId,
+            collection.collectionName
+          );
           break;
         case NotificationType.SMS:
-          this.smsNotificationService.sendNotification(user.id, auctionId);
+          this.smsNotificationService.sendNotification(
+            user.id,
+            auctionId,
+            collection.collectionName
+          );
           break;
         default:
           console.log(`Unsupported notification type: ${preference}`);
           break;
       }
-    });
+    }
   }
 }

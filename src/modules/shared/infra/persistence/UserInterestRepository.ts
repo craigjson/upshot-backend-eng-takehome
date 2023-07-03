@@ -4,7 +4,6 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class UserInterestRepository {
   private readonly userInterests: UserInterest[] = [
-    // Use the Mock Users in the UserRepository.ts file
     {
       userId: "1",
       collectionId: "1",

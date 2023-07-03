@@ -1,4 +1,4 @@
-import { AuctionCreatedEvent } from "@modules/auction/domain/events/AuctionCreatedEvent";
+import { AuctionCreatedEvent } from "@modules/shared/domain/events/AuctionCreatedEvent";
 import { KafkaConsumer } from "../../infra/messaging/KafkaConsumer";
 import { KafkaProducer } from "../../../shared/infra/messaging/KafkaProducer";
 import { NotifyUserEvent } from "../events/NotifyUserEvent";
@@ -16,17 +16,15 @@ export class AuctionCreatedHandler {
   }
 
   async handleEvent(message: AuctionCreatedEvent) {
-    const interestedUsers = this.userInterestService.getUsers();
+    const interestedUsers = await this.userInterestService.getInterestedUsers(
+      message.nftCollection.id
+    );
     console.log("Found Event: AuctionCreatedEvent");
-    console.log(message);
-    interestedUsers.forEach((user) => {
-      const notifyUserEvent: NotifyUserEvent = {
-        user: user,
-        auctionId: message.auctionId,
-        collectionId: message.nftCollection,
-      };
-
-      this.producer.publish("NotifyUserEvent", notifyUserEvent);
-    });
+    for (const user of interestedUsers) {
+      this.producer.publish(
+        "NotifyUserEvent",
+        new NotifyUserEvent(user, message.auctionId, message.nftCollection)
+      );
+    }
   }
 }

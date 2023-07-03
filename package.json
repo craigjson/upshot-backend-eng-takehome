@@ -24,6 +24,7 @@
   "dependencies": {
     "@nestjs/common": "^10.0.4",
     "@nestjs/core": "^10.0.4",
+    "@nestjs/mapped-types": "^2.0.2",
     "@nestjs/platform-express": "^10.0.4",
     "kafkajs": "^2.2.4",
     "nest": "^8.0.0",

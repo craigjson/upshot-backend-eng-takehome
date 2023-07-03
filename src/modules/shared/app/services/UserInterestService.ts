@@ -10,13 +10,16 @@ export class UserInterestService {
     private readonly userRepository: UserRepository
   ) {}
 
+  getUsers = (): User[] => {
+    return this.userRepository.users;
+  };
+
   async getInterestedUsers(collectionId: string): Promise<User[]> {
     const interestedUsers =
       await this.userInterestRepository.findInterestedUsersByCollectionId(
         collectionId
       );
-    console.log("Found interested users: ", interestedUsers);
-    const users = this.userRepository.findAll();
+    const users = this.userRepository.users;
     const filteredUsers = users.filter((user) => {
       return interestedUsers.some((interest) => interest.userId === user.id);
     });
