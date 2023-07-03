@@ -145,4 +145,4 @@ These improvements can enhance the functionality, performance, reliability, and 
 ### Misc Notes
 1. Imports are kind of a mess due to the time constraint and an issue I was running in with @module tsconfig style imports not working with the debugger. 
 2. There are no unit tests again due to time constraint
-3. Error Handling / Retry Mechanisms with Kafka are essentially non existent and the service will likely crash if input is incorrect or otherwise. Typically my workflow would start with unit tests and practical error handling but I was really feeling the pressure with the time limit
+3. Error Handling / Retry Mechanisms with Kafka are essentially non existent and the service will likely crash if input is incorrect Kafka is experiencing issues/isn't up. Typically my workflow would start with unit tests and practical error handling but I was really feeling the pressure with the time limit
