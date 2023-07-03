@@ -33,7 +33,6 @@ export class NotificationService {
       emailNotificationService,
       pushNotificationService,
       smsNotificationService,
-      userService,
       kafkaConsumerNotify
     );
   }
